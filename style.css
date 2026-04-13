@@ -135,10 +135,10 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    gap: 150px;
 }
 
-.hero-content { flex: 1; max-width: 550px; }
+.hero-content { flex: 1; max-width: 500px; }
 .badge {
     padding: 6px 15px;
     background: #fff;
@@ -194,7 +194,7 @@ header .container {
 
 .collage-1 {
     z-index: 1;
-    transform: rotate(-10deg) translate(-140px, -60px);
+    transform: rotate(-10deg) translate(-60px, -60px);
     animation: float-collage 8s infinite alternate ease-in-out;
 }
 
@@ -208,7 +208,7 @@ header .container {
 
 .collage-3 {
     z-index: 5;
-    transform: rotate(12deg) translate(140px, 80px);
+    transform: rotate(12deg) translate(60px, 80px);
     animation: float-collage 9s infinite alternate ease-in-out 2s;
 }
 
@@ -224,9 +224,9 @@ header .container {
 }
 
 /* Применяем переменные для анимации, чтобы сохранить поворот */
-.collage-1 { --rot: -10deg; --tx: -140px; --ty: -60px; }
+.collage-1 { --rot: -10deg; --tx: -60px; --ty: -60px; }
 .collage-2 { --rot: 2deg; --tx: 0; --ty: 0; }
-.collage-3 { --rot: 12deg; --tx: 140px; --ty: 80px; }
+.collage-3 { --rot: 12deg; --tx: 60px; --ty: 80px; }
 
 /* Features */
 .section { padding: 100px 0; }
@@ -614,7 +614,7 @@ footer {
     /* === HERO REFACTOR (STRICT ORDER) === */
     .hero { 
         padding-top: 100px; /* Space for fixed header */
-        padding-bottom: 20px; 
+        padding-bottom: 80px; /* Increased bottom padding to avoid collage overlapping next section */
         min-height: auto; 
         display: block; /* Avoid flex issues if container is messy */
     }
@@ -630,7 +630,7 @@ footer {
         order: 1; 
         width: 100%; 
         max-width: 100%; 
-        margin-bottom: 20px; 
+        margin-bottom: 40px; 
         z-index: 5;
     }
     .hero-collage { 
@@ -638,7 +638,7 @@ footer {
         width: 100%; 
         height: 280px; 
         position: relative; 
-        margin: 30px 0 0;
+        margin: 0 0 40px 0; /* Added bottom margin */
         transform: scale(0.8);
         display: flex;
         justify-content: center;
