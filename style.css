@@ -165,68 +165,28 @@ header .container {
 }
 .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 35px var(--accent-glow); }
 
-.hero-collage {
+.hero-single-image {
     flex: 1;
-    position: relative;
-    height: 600px;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
 }
 
-.collage-item {
-    position: absolute;
-    width: 320px;
-    border-radius: 20px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-    background: white;
-    padding: 8px; /* Имитация рамки */
-    transition: var(--transition);
-    overflow: hidden;
-}
-
-.collage-item img {
-    width: 100%;
+.hero-single-image img {
+    max-width: 100%;
     height: auto;
     border-radius: 12px;
-    display: block;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.1);
+    border: 8px solid #fff;
+    transition: var(--transition);
 }
 
-.collage-1 {
-    z-index: 1;
-    transform: rotate(-10deg) translate(-60px, -60px);
-    animation: float-collage 8s infinite alternate ease-in-out;
+.hero-single-image img:hover {
+    transform: translateY(-10px) rotate(1deg) scale(1.02);
+    box-shadow: 0 35px 80px rgba(0,0,0,0.15);
 }
-
-.collage-2 {
-    z-index: 10;
-    width: 380px; /* Главное фото крупнее */
-    transform: rotate(2deg) translate(0, 0);
-    box-shadow: 0 30px 80px rgba(0,0,0,0.2);
-    animation: float-collage 6s infinite alternate ease-in-out 1s;
-}
-
-.collage-3 {
-    z-index: 5;
-    transform: rotate(12deg) translate(60px, 80px);
-    animation: float-collage 9s infinite alternate ease-in-out 2s;
-}
-
-.collage-item:hover {
-    z-index: 20;
-    transform: scale(1.05) translate(0, -20px) !important;
-    box-shadow: var(--shadow-hover);
-}
-
-@keyframes float-collage {
-    from { transform: rotate(var(--rot)) translate(var(--tx), var(--ty)); }
-    to { transform: rotate(var(--rot)) translate(var(--tx), calc(var(--ty) + 20px)); }
-}
-
-/* Применяем переменные для анимации, чтобы сохранить поворот */
-.collage-1 { --rot: -10deg; --tx: -60px; --ty: -60px; }
-.collage-2 { --rot: 2deg; --tx: 0; --ty: 0; }
-.collage-3 { --rot: 12deg; --tx: 60px; --ty: 80px; }
 
 /* Features */
 .section { padding: 100px 0; }
@@ -633,41 +593,21 @@ footer {
         margin-bottom: 40px; 
         z-index: 5;
     }
-    .hero-collage { 
+    .hero-single-image { 
         order: 2; 
         width: 100%; 
-        height: 280px; 
-        position: relative; 
-        margin: 0 0 40px 0; /* Added bottom margin */
-        transform: scale(0.8);
+        max-width: 100%;
+        margin: 0 0 40px 0;
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 1;
     }
-    
-    .hero h1 { font-size: 1.7rem; line-height: 1.2; margin-bottom: 15px; }
-    .hero p { font-size: 0.95rem; margin-bottom: 25px; }
-    
-    /* === COLLAGE STABILIZATION === */
-    .collage-item { 
-        position: absolute !important; 
-        width: 160px; 
-        animation: none !important; /* Stop base animations on mobile for stability */
-        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    .collage-2 { 
-        width: 190px; 
-        z-index: 10; 
-        transform: rotate(0deg) translate(0, 0) !important; 
-    }
-    .collage-1 { 
-        z-index: 5; 
-        transform: rotate(-10deg) translate(-80px, -20px) !important; 
-    }
-    .collage-3 { 
-        z-index: 5; 
-        transform: rotate(10deg) translate(80px, 30px) !important; 
+    .hero-single-image img {
+        width: 90%;
+        max-width: 400px;
+        transform: none !important;
+        border-width: 5px;
     }
     
     .hero-btns { width: 100%; }
@@ -694,7 +634,7 @@ footer {
 @media (max-width: 480px) {
     .container { padding: 0 15px; }
     .hero h1 { font-size: 1.5rem; }
-    .hero-collage { transform: scale(0.65); height: 240px; margin-top: 10px; }
+    .hero-single-image img { width: 100%; }
     
     .price-grid { grid-template-columns: repeat(2, 1fr); }
     
