@@ -77,4 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         revealElements.forEach(el => el.classList.add('active'));
     }, 2000);
+
+    // Логика "Смотреть все работы"
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const galleryHidden = document.getElementById('gallery-hidden');
+
+    if (showMoreBtn && galleryHidden) {
+        showMoreBtn.addEventListener('click', () => {
+            galleryHidden.classList.toggle('active');
+            if (galleryHidden.classList.contains('active')) {
+                showMoreBtn.textContent = 'Скрыть';
+            } else {
+                showMoreBtn.textContent = 'Смотреть все работы';
+                // Прокрутка обратно к началу галереи, если пользователь скрыл её
+                document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 });
