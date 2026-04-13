@@ -601,41 +601,35 @@ footer {
 @media (max-width: 768px) {
     html, body { overflow-x: hidden; width: 100vw; position: relative; }
     
-    .section { padding: 60px 0; }
-    .section-title { font-size: 1.8rem; margin-bottom: 30px; text-align: center; }
+    /* Скрываем десктопное меню */
+    .nav-links { display: none !important; }
+    .burger { display: flex !important; }
     
-    .hero { padding-top: 100px; padding-bottom: 40px; min-height: auto; }
-    .hero h1 { font-size: 2.2rem; }
-    .hero p { font-size: 1rem; }
+    .section { padding: 50px 0; }
+    .section-title { font-size: 1.6rem; margin-bottom: 25px; text-align: center; }
     
-    .hero-collage { height: 450px; margin-top: 30px; transform: scale(0.8); }
-    .collage-item { width: 240px; }
-    .collage-2 { width: 280px; }
+    .hero { padding-top: 90px; padding-bottom: 30px; min-height: auto; text-align: center; }
+    .hero .container { flex-direction: column; }
+    .hero h1 { font-size: 1.8rem; margin-bottom: 15px; width: 100%; }
+    .hero p { font-size: 0.95rem; margin-bottom: 25px; width: 100%; }
+    .hero-content { max-width: 100%; margin-bottom: 40px; }
     
-    .marquee-item { width: 180px; height: 240px; }
-    .video-marquee .video-card { flex: 0 0 180px; }
-    .video-marquee .video-card video { height: 320px; }
+    .hero-collage { height: 320px; width: 100%; margin: 20px 0; transform: scale(0.85); order: -1; }
+    .collage-item { width: 180px; }
+    .collage-2 { width: 220px; }
+    .collage-1 { --tx: -100px; --ty: -30px; }
+    .collage-3 { --tx: 100px; --ty: 40px; }
     
-    .order-card { padding: 50px 20px; border-radius: 30px; }
-    .order-btns { flex-direction: column; width: 100%; }
-    .order-btns .btn { width: 100%; min-height: 70px; }
+    .hero-btns { width: 100%; }
+    .hero-btns .btn { width: 100%; display: block; padding: 18px 20px; }
     
-    .footer-grid { 
-        grid-template-columns: 1fr; 
-        gap: 40px; 
-        text-align: center; 
-    }
-    .footer-tagline { max-width: 100%; }
-    .footer-social-icons { justify-content: center; }
-    .footer-logo { font-size: 1.5rem; margin-bottom: 15px; }
+    .order-card { padding: 40px 20px; border-radius: 30px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
 }
 
 @media (max-width: 480px) {
     .container { padding: 0 15px; }
-    .hero h1 { font-size: 2rem; }
-    .hero-collage { transform: scale(0.65) translateY(-50px); height: 350px; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero-collage { transform: scale(0.7); height: 280px; margin-top: -20px; }
     .price-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .price-item { padding: 15px; }
-    .price-item .size { font-size: 0.9rem; }
-    .price-item .price { font-size: 1.1rem; }
 }
