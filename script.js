@@ -76,8 +76,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // FAIL-SAFE: Если через 2 секунды анимация не сработала — показываем всё
-    setTimeout(() => {
-        revealElements.forEach(el => el.classList.add('active'));
-    }, 2000);
+    // Принудительное автовоспроизведение видео (обход блокировки мобильных браузеров)
+    const allVideos = document.querySelectorAll('.video-card video');
+    
+    function forcePlayVideos() {
+        allVideos.forEach(video => {
+            video.muted = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('autoplay', '');
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // Браузер заблокировал — попробуем при первом касании
+                });
+            }
+        });
+    }
+
+    // Запускаем при появлении секции отзывов
+    const reviewSection = document.querySelector('#reviews');
+    if (reviewSection) {
+        const videoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    forcePlayVideos();
+                }
+            });
+        }, { threshold: 0.1 });
+        videoObserver.observe(reviewSection);
+    }
+
+    // Запускаем при первом касании экрана (fallback для iOS)
+    document.addEventListener('touchstart', forcePlayVideos, { once: true });
+    document.addEventListener('click', forcePlayVideos, { once: true });
+
+    // Запускаем сразу на десктопе
+    forcePlayVideos();
 });
