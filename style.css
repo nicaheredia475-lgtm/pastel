@@ -27,6 +27,11 @@ body {
     overflow-x: hidden;
 }
 
+.style-img {
+    height: 220px;
+    overflow: hidden;
+}
+
 h1, h2, h3 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
@@ -285,6 +290,7 @@ header .container {
     padding: 35px;
     border-radius: 30px;
     text-align: center;
+}
 
 /* Gallery (Infinite Marquee) */
 .gallery-marquee-container {
@@ -326,7 +332,7 @@ header .container {
     display: flex;
     gap: 20px;
     flex-shrink: 0;
-    min-width: 100%;
+    width: max-content;
 }
 
 .track-left { animation: marquee-left 40s linear infinite; }
@@ -337,13 +343,14 @@ header .container {
 }
 
 .marquee-item {
-    width: 280px;
-    height: 350px;
+    width: 180px;
+    height: 230px;
     flex-shrink: 0;
-    border-radius: 20px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     background: #f0f2f5;
+    margin: 0;
 }
 
 .marquee-item img {
@@ -367,11 +374,11 @@ header .container {
     padding: 20px 0;
 }
 .video-marquee .video-card {
-    flex: 0 0 280px;
+    flex: 0 0 180px;
     margin: 0;
 }
 .video-marquee .video-card video {
-    height: 480px;
+    height: 320px;
     background: #000;
 }
 
@@ -446,11 +453,14 @@ header .container {
 }
 
 .messenger-icon {
-    width: 32px;
-    height: 32px;
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
     object-fit: contain;
     vertical-align: middle;
-    margin-right: 12px;
+    margin-right: 8px;
+    display: inline-block;
 }
 
 /* Footer Social Icons with Images */
@@ -475,8 +485,8 @@ header .container {
 }
 
 .footer-social-link img {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
 }
 
@@ -682,7 +692,7 @@ footer {
     .feature-card { padding: 25px 20px; border-radius: 20px; }
     .feature-icon { font-size: 2.5rem; }
 
-    .marquee-item { width: 200px; height: 260px; }
+    .marquee-item { width: 150px; height: 200px; }
     .video-marquee .video-card { flex: 0 0 200px; }
     .video-marquee .video-card video { height: 350px; }
     

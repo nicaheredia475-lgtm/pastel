@@ -8,6 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuOverlay = document.querySelector('.menu-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav a');
 
+    // Логика переключения табов
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-tab');
+
+            // Убираем активный класс у всех кнопок и контента
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => c.classList.remove('active'));
+
+            // Добавляем активный класс текущей кнопке и контенту
+            btn.classList.add('active');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
     // Логика гамбургера
     hamburger.addEventListener('click', () => {
         hamburger.classList.toggle('active');
@@ -24,27 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // FAQ Accordion
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        item.addEventListener('click', () => {
-            item.classList.toggle('active');
-        });
-    });
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const target = btn.getAttribute('data-tab');
-
-            // Убираем активный класс у всех кнопок и контента
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-
-            // Добавляем активный класс текущей кнопке и контенту
-            btn.classList.add('active');
-            document.getElementById(target).classList.add('active');
-        });
-    });
 
     // Плавная прокрутка для всех навигационных ссылок
     document.querySelectorAll('nav a').forEach(anchor => {
