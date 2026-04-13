@@ -76,17 +76,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // Умное воспроизведение видео — только видимые играют
+    // Умное воспроизведение видео — максимум 2 одновременно на мобильных
     const allVideos = document.querySelectorAll('.video-card video');
+    const isMobile = window.innerWidth < 768;
+    const maxConcurrent = isMobile ? 2 : 6;
+    let playingVideos = new Set();
     
     const videoObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
             if (entry.isIntersecting) {
-                video.muted = true;
-                video.play().catch(() => {});
+                if (playingVideos.size < maxConcurrent) {
+                    video.muted = true;
+                    video.play().catch(() => {});
+                    playingVideos.add(video);
+                }
             } else {
                 video.pause();
+                playingVideos.delete(video);
             }
         });
     }, { threshold: 0.05 });
@@ -94,24 +101,24 @@ document.addEventListener('DOMContentLoaded', () => {
     allVideos.forEach(video => {
         video.muted = true;
         video.setAttribute('playsinline', '');
-        video.preload = 'metadata';
+        video.preload = isMobile ? 'none' : 'metadata';
         videoObserver.observe(video);
     });
 
-    // Fallback для iOS/Telegram — повторная попытка
+    // Fallback для iOS/Telegram
     function retryPlay() {
         allVideos.forEach(v => {
             const rect = v.getBoundingClientRect();
             const isVisible = rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0;
-            if (v.paused && isVisible) {
+            if (v.paused && isVisible && playingVideos.size < maxConcurrent) {
                 v.muted = true;
                 v.play().catch(() => {});
+                playingVideos.add(v);
             }
         });
     }
 
     document.addEventListener('touchstart', retryPlay, { once: true });
     document.addEventListener('scroll', retryPlay, { once: true });
-    setTimeout(retryPlay, 1500);
-    setTimeout(retryPlay, 3000);
+    setTimeout(retryPlay, 2000);
 });
