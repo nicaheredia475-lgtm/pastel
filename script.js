@@ -76,41 +76,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // Принудительное автовоспроизведение видео (обход блокировки мобильных браузеров)
+    // Умное воспроизведение видео — только видимые играют
     const allVideos = document.querySelectorAll('.video-card video');
     
-    function forcePlayVideos() {
-        allVideos.forEach(video => {
-            video.muted = true;
-            video.setAttribute('playsinline', '');
-            video.setAttribute('muted', '');
-            video.setAttribute('autoplay', '');
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(() => {
-                    // Браузер заблокировал — попробуем при первом касании
-                });
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+                video.muted = true;
+                const playPromise = video.play();
+                if (playPromise) playPromise.catch(() => {});
+            } else {
+                video.pause();
             }
         });
-    }
+    }, { threshold: 0.3 });
 
-    // Запускаем при появлении секции отзывов
-    const reviewSection = document.querySelector('#reviews');
-    if (reviewSection) {
-        const videoObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    forcePlayVideos();
-                }
-            });
-        }, { threshold: 0.1 });
-        videoObserver.observe(reviewSection);
-    }
+    allVideos.forEach(video => {
+        video.muted = true;
+        video.setAttribute('playsinline', '');
+        video.preload = 'none';
+        videoObserver.observe(video);
+    });
 
-    // Запускаем при первом касании экрана (fallback для iOS)
-    document.addEventListener('touchstart', forcePlayVideos, { once: true });
-    document.addEventListener('click', forcePlayVideos, { once: true });
-
-    // Запускаем сразу на десктопе
-    forcePlayVideos();
+    // Fallback для iOS — запуск при первом касании
+    document.addEventListener('touchstart', () => {
+        allVideos.forEach(v => {
+            if (v.paused && v.getBoundingClientRect().top < window.innerHeight) {
+                v.muted = true;
+                v.play().catch(() => {});
+            }
+        });
+    }, { once: true });
 });
