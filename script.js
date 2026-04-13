@@ -84,28 +84,34 @@ document.addEventListener('DOMContentLoaded', () => {
             const video = entry.target;
             if (entry.isIntersecting) {
                 video.muted = true;
-                const playPromise = video.play();
-                if (playPromise) playPromise.catch(() => {});
+                video.play().catch(() => {});
             } else {
                 video.pause();
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.05 });
 
     allVideos.forEach(video => {
         video.muted = true;
         video.setAttribute('playsinline', '');
-        video.preload = 'none';
+        video.preload = 'metadata';
         videoObserver.observe(video);
     });
 
-    // Fallback для iOS — запуск при первом касании
-    document.addEventListener('touchstart', () => {
+    // Fallback для iOS/Telegram — повторная попытка
+    function retryPlay() {
         allVideos.forEach(v => {
-            if (v.paused && v.getBoundingClientRect().top < window.innerHeight) {
+            const rect = v.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0 && rect.left < window.innerWidth && rect.right > 0;
+            if (v.paused && isVisible) {
                 v.muted = true;
                 v.play().catch(() => {});
             }
         });
-    }, { once: true });
+    }
+
+    document.addEventListener('touchstart', retryPlay, { once: true });
+    document.addEventListener('scroll', retryPlay, { once: true });
+    setTimeout(retryPlay, 1500);
+    setTimeout(retryPlay, 3000);
 });
