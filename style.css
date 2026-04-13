@@ -384,28 +384,33 @@ header .container {
     margin-bottom: 15px; 
 }
 
-/* Mobile Optimizations */
+/* Mobile Magic & Fixes */
 @media (max-width: 768px) {
-    .section { padding: 80px 0; }
-    .section-title { font-size: 2rem; margin-bottom: 40px; }
+    html, body { overflow-x: hidden; width: 100vw; position: relative; }
     
-    .hero h1 { font-size: 2.8rem; }
-    .hero p { font-size: 1.1rem; }
+    .section { padding: 60px 0; }
+    .section-title { font-size: 1.8rem; margin-bottom: 30px; text-align: center; }
     
-    .order-card { padding: 40px 20px; }
-    .order-btns { flex-direction: column; }
-    .order-btns .btn { width: 100%; min-height: 65px; }
-
-    .marquee-item { width: 220px; height: 280px; }
-    .video-marquee .video-card { flex: 0 0 220px; }
-    .video-marquee .video-card video { height: 380px; }
+    .hero { padding-top: 100px; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero p { font-size: 1rem; }
     
-    .footer-grid { flex-direction: column; text-align: center; }
+    .marquee-item { width: 180px; height: 240px; }
+    .video-marquee .video-card { flex: 0 0 180px; }
+    .video-marquee .video-card video { height: 320px; }
+    
+    .order-card { padding: 40px 20px; border-radius: 30px; }
+    .order-btns .btn { width: 100%; min-height: 60px; font-size: 1rem; }
+    
+    .footer-grid { flex-direction: column; text-align: center; gap: 20px; }
+    .footer-logo { font-size: 1.5rem; }
 }
 
 @media (max-width: 480px) {
-    .container { padding: 0 20px; }
-    .hero h1 { font-size: 2.3rem; }
+    .container { padding: 0 15px; }
+    .hero h1 { font-size: 2rem; }
     .price-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .tab-btn { padding: 12px 15px; font-size: 0.8rem; }
+    .price-item { padding: 15px; }
+    .price-item .size { font-size: 0.9rem; }
+    .price-item .price { font-size: 1.1rem; }
 }
