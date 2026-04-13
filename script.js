@@ -72,4 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     revealElements.forEach(el => revealObserver.observe(el));
+
+    // FAIL-SAFE: Если через 2 секунды анимация не сработала — показываем всё
+    setTimeout(() => {
+        revealElements.forEach(el => el.classList.add('active'));
+    }, 2000);
 });

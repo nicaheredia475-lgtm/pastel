@@ -313,8 +313,8 @@ footer { padding: 80px 0 40px; border-top: 1px solid #f0f2f5; margin-top: 100px;
 .footer-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
 
 /* Animations */
-.reveal { opacity: 0; transform: translateY(30px); transition: all 1s ease; }
-.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.active { opacity: 1 !important; transform: translateY(0) !important; }
 @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 768px) {
