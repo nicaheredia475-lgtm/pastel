@@ -444,7 +444,100 @@ header .container {
 @keyframes shimmer { 0% { left: -100%; } 20% { left: 100%; } 100% { left: 100%; } }
 @keyframes float { from { transform: translate(0, 0); } to { transform: translate(20px, 30px); } }
 
-/* Mobile Optimizations */
+/* Footer (Premium Top Tier) */
+footer {
+    padding: 80px 0 0;
+    background: #fcfdfe; /* Очень светлый пастельный фон */
+    border-top: 1px solid #f0f2f5;
+    margin-top: 100px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+.footer-col h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-tagline {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    max-width: 300px;
+}
+
+.footer-col.links ul {
+    list-style: none;
+}
+
+.footer-col.links li {
+    margin-bottom: 12px;
+}
+
+.footer-col.links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.footer-col.links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.footer-social-icons a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.footer-social-icons a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.delivery-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.footer-bottom {
+    padding: 30px 0;
+    border-top: 1px solid #f0f2f5;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+/* Mobile Magic & Fixes */
 @media (max-width: 768px) {
     html, body { overflow-x: hidden; width: 100vw; position: relative; }
     
@@ -463,8 +556,14 @@ header .container {
     .order-btns { flex-direction: column; width: 100%; }
     .order-btns .btn { width: 100%; min-height: 70px; }
     
-    .footer-grid { flex-direction: column; text-align: center; gap: 20px; }
-    .footer-logo { font-size: 1.5rem; }
+    .footer-grid { 
+        grid-template-columns: 1fr; 
+        gap: 40px; 
+        text-align: center; 
+    }
+    .footer-tagline { max-width: 100%; }
+    .footer-social-icons { justify-content: center; }
+    .footer-logo { font-size: 1.5rem; margin-bottom: 15px; }
 }
 
 @media (max-width: 480px) {
