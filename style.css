@@ -476,9 +476,9 @@ header .container {
     justify-content: center;
     width: 45px;
     height: 45px;
-    background: #f1f3f6;
+    background: white;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    box-shadow: var(--shadow-soft);
     transition: var(--transition);
     text-decoration: none;
     font-size: 1.5rem;
