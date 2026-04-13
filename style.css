@@ -599,37 +599,112 @@ footer {
 
 /* Mobile Magic & Fixes */
 @media (max-width: 768px) {
-    html, body { overflow-x: hidden; width: 100vw; position: relative; }
+    html, body { overflow-x: hidden; position: relative; }
     
-    /* Скрываем десктопное меню */
-    .nav-links { display: none !important; }
-    .burger { display: flex !important; }
+    /* === HEADER FIX === */
+    header { padding: 15px 0; }
+    .desktop-nav { display: none !important; }
+    .hamburger { display: flex !important; }
+    .logo { font-size: 1.3rem; }
+
+    /* === GENERAL SECTION FIX === */
+    .section { padding: 40px 0; }
+    .section-title { font-size: 1.6rem; margin-bottom: 30px; }
     
-    .section { padding: 50px 0; }
-    .section-title { font-size: 1.6rem; margin-bottom: 25px; text-align: center; }
+    /* === HERO REFACTOR (STRICT ORDER) === */
+    .hero { 
+        padding-top: 100px; /* Space for fixed header */
+        padding-bottom: 20px; 
+        min-height: auto; 
+        display: block; /* Avoid flex issues if container is messy */
+    }
+    .hero .container { 
+        display: flex !important; 
+        flex-direction: column !important; 
+        align-items: center; 
+        text-align: center;
+        gap: 0;
+    }
     
-    .hero { padding-top: 90px; padding-bottom: 30px; min-height: auto; text-align: center; }
-    .hero .container { flex-direction: column; }
-    .hero h1 { font-size: 1.8rem; margin-bottom: 15px; width: 100%; }
-    .hero p { font-size: 0.95rem; margin-bottom: 25px; width: 100%; }
-    .hero-content { max-width: 100%; margin-bottom: 40px; }
+    .hero-content { 
+        order: 1; 
+        width: 100%; 
+        max-width: 100%; 
+        margin-bottom: 20px; 
+        z-index: 5;
+    }
+    .hero-collage { 
+        order: 2; 
+        width: 100%; 
+        height: 280px; 
+        position: relative; 
+        margin: 30px 0 0;
+        transform: scale(0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
     
-    .hero-collage { height: 320px; width: 100%; margin: 20px 0; transform: scale(0.85); order: -1; }
-    .collage-item { width: 180px; }
-    .collage-2 { width: 220px; }
-    .collage-1 { --tx: -100px; --ty: -30px; }
-    .collage-3 { --tx: 100px; --ty: 40px; }
+    .hero h1 { font-size: 1.7rem; line-height: 1.2; margin-bottom: 15px; }
+    .hero p { font-size: 0.95rem; margin-bottom: 25px; }
+    
+    /* === COLLAGE STABILIZATION === */
+    .collage-item { 
+        position: absolute !important; 
+        width: 160px; 
+        animation: none !important; /* Stop base animations on mobile for stability */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .collage-2 { 
+        width: 190px; 
+        z-index: 10; 
+        transform: rotate(0deg) translate(0, 0) !important; 
+    }
+    .collage-1 { 
+        z-index: 5; 
+        transform: rotate(-10deg) translate(-80px, -20px) !important; 
+    }
+    .collage-3 { 
+        z-index: 5; 
+        transform: rotate(10deg) translate(80px, 30px) !important; 
+    }
     
     .hero-btns { width: 100%; }
     .hero-btns .btn { width: 100%; display: block; padding: 18px 20px; }
     
+    /* === PRICE GRID === */
+    .price-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 8px; 
+    }
+    .price-item span { font-size: 0.65rem; }
+    .price-item strong { font-size: 0.9rem; }
+    
+    /* === ORDER SECTION === */
     .order-card { padding: 40px 20px; border-radius: 30px; }
+    .order-btns { flex-direction: column; gap: 12px; }
+    .order-btns .btn { width: 100%; min-width: auto; height: 60px; font-size: 1rem; border-radius: 15px; }
+
+    /* === FOOTER === */
     .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    .footer-col.about { align-items: center; }
 }
 
 @media (max-width: 480px) {
     .container { padding: 0 15px; }
-    .hero h1 { font-size: 1.7rem; }
-    .hero-collage { transform: scale(0.7); height: 280px; margin-top: -20px; }
-    .price-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .hero h1 { font-size: 1.5rem; }
+    .hero-collage { transform: scale(0.65); height: 240px; margin-top: 10px; }
+    
+    .price-grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .section-title { font-size: 1.4rem; }
+    .feature-card { padding: 25px 20px; border-radius: 20px; }
+    .feature-icon { font-size: 2.5rem; }
+
+    .marquee-item { width: 200px; height: 260px; }
+    .video-marquee .video-card { flex: 0 0 200px; }
+    .video-marquee .video-card video { height: 350px; }
+    
+    .mobile-nav a { font-size: 1.5rem; }
 }
