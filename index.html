@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naprinte — 3D печать фото на холсте в Беларуси</title>
+    <meta name="description" content="Премиальная печать ваших фото на холсте с 3D-эффектом. Акция 1+1: второй холст в подарок. Бесплатная ретушь и доставка по всей Беларуси.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">NAPRINTE</a>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#prices">Цены</a></li>
+                    <li><a href="#order" class="btn-small">Заказать</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay">
+        <nav class="mobile-nav">
+            <ul>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#prices">Цены</a></li>
+                <li><a href="#order">Заказать</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Акция 1+1: Второй холст в подарок</span>
+                <h1>Ваши фото станут живым искусством</h1>
+                <p>Печать на премиальных холстах с объемной 3D-фактурой. Бесплатная ретушь и доставка за 2 дня по всей Беларуси.</p>
+                <div class="hero-btns">
+                    <a href="https://t.me/naprinte" class="btn">Рассчитать стоимость</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="img/hero.png" alt="3D холст пример работы">
+            </div>
+        </div>
+    </section>
+
+    <!-- Остальные секции будут добавлены далее -->
+    
+    <section id="about" class="about section reveal">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>3D-фактура</h3>
+                    <p>Наносим специальный прозрачный гель вручную, создавая эффект мазков масляной краской.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>Галерейная натяжка</h3>
+                    <p>Изображение продолжается на торцах подрамника. Картина выглядит объемно без рамы.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Пигментная печать</h3>
+                    <p>Используем японские чернила, которые не выцветают более 50 лет даже на солнце.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prices" class="prices section reveal">
+        <div class="container">
+            <h2 class="section-title">Цены и размеры</h2>
+            <div class="tabs-control">
+                <button class="tab-btn active" data-tab="synthetic">Синтетика</button>
+                <button class="tab-btn" data-tab="natural">Натуральный холст</button>
+            </div>
+            
+            <div id="synthetic" class="tab-content active">
+                <div class="price-grid">
+                    <div class="price-item"><span>30 x 40 см</span><strong>24 BYN</strong></div>
+                    <div class="price-item"><span>40 x 50 см</span><strong>32 BYN</strong></div>
+                    <div class="price-item"><span>50 x 70 см</span><strong>45 BYN</strong></div>
+                    <div class="price-item"><span>60 x 80 см</span><strong>62 BYN</strong></div>
+                </div>
+            </div>
+
+            <div id="natural" class="tab-content">
+                <div class="price-grid">
+                    <div class="price-item"><span>30 x 40 см</span><strong>38 BYN</strong></div>
+                    <div class="price-item"><span>40 x 50 см</span><strong>49 BYN</strong></div>
+                    <div class="price-item"><span>50 x 70 см</span><strong>68 BYN</strong></div>
+                    <div class="price-item"><span>60 x 80 см</span><strong>88 BYN</strong></div>
+                </div>
+            </div>
+
+            <div class="bonus-box">
+                <p>🎁 <strong>Не забывайте:</strong> Второй такой же холст вы получаете <strong>БЕСПЛАТНО</strong>!</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery section reveal">
+        <div class="container">
+            <h2 class="section-title">Галерея наших работ</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="img/interior_1.png" alt="Холст в интерьере">
+                    <div class="gallery-overlay">
+                        <span>В интерьере</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/texture.png" alt="3D Фактура">
+                    <div class="gallery-overlay">
+                        <span>3D Фактура гелем</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="img/hero.png" alt="Пример печати">
+                    <div class="gallery-overlay">
+                        <span>Премиум печать</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="order section reveal">
+        <div class="container">
+            <div class="order-card">
+                <h2>Готовы перенести фото на холст?</h2>
+                <p>Пришлите нам фото, и наш дизайнер подготовит макет бесплатно уже сегодня!</p>
+                <div class="order-btns">
+                    <a href="https://t.me/naprinte" class="btn btn-tg">Написать в Telegram</a>
+                    <a href="https://wa.me/ваш_номер" class="btn btn-wa">Написать в WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo">NAPRINTE</div>
+                <div class="footer-info">
+                    <p>© 2026 Naprinte. Доставка по всей Беларуси.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://instagram.com/naprinte">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

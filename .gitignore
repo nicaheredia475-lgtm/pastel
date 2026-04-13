@@ -1,0 +1,14 @@
+# Windows thumbnails
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# OS X files
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Backup files
+*.bak
+*.tmp
