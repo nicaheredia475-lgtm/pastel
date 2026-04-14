@@ -67,39 +67,30 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', () => {
             const videoSrc = card.getAttribute('data-video');
             
-            // Очищаем предыдущий источник для стабильности
-            modalVideo.pause();
-            modalVideo.innerHTML = ''; 
-            
-            // Создаем новый элемент source - это надежнее для мобильных браузеров
-            const source = document.createElement('source');
-            source.src = videoSrc;
-            source.type = 'video/mp4';
-            modalVideo.appendChild(source);
-            
-            // Заставляем плеер 'проснуться' и загрузить новый источник
-            modalVideo.load();
-            
+            // Открываем модальное окно
             videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Настройка видео
+            modalVideo.src = videoSrc;
+            modalVideo.load(); // Подгружаем файл
             
-            // Пробуем запустить воспроизведение
+            // Запуск воспроизведения
             const playPromise = modalVideo.play();
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    // Если браузер блокирует (например, на iPhone в режиме энергосбережения), 
-                    // просто выведем в консоль. Пользователь сможет нажать Play сам.
-                    console.log("Видео готово, ожидает ручного запуска, если автоплей заблокирован.");
+                    console.log("Обычный запуск не удался, пробуем без звука...");
+                    modalVideo.muted = true;
+                    modalVideo.play();
                 });
             }
-            
-            document.body.style.overflow = 'hidden';
         });
     });
 
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
         modalVideo.pause();
-        modalVideo.src = '';
+        // ВАЖНО: не обнуляем src сразу, чтобы не ломать поток
         if (!menuOverlay.classList.contains('active')) {
             document.body.style.overflow = 'auto';
         }
