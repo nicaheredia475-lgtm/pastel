@@ -3,14 +3,15 @@
 :root {
     --bg-dark: #ffffff;
     --bg-card: #ffffff;
-    --accent: #ff85a2; /* Розовый пастель */
-    --accent-secondary: #85d7ff; /* Голубой пастель */
+    --accent: #ff85a2; /* Розовый основной */
+    --accent-secondary: #ff6b8e; /* Более темный розовый для контраста */
+    --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-secondary));
     --accent-glow: rgba(255, 133, 162, 0.15);
     --text-primary: #2d3436;
     --text-secondary: #636e72;
-    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     --shadow-soft: 0 10px 40px rgba(0,0,0,0.05);
-    --shadow-hover: 0 20px 60px rgba(255, 133, 162, 0.15);
+    --shadow-hover: 0 20px 60px rgba(255, 133, 162, 0.2);
 }
 
 * {
@@ -25,6 +26,7 @@ body {
     font-family: 'Manrope', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 .style-img {
@@ -35,7 +37,11 @@ body {
 h1, h2, h3 {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    color: var(--accent) !important; /* Однотонный розовый */
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    -webkit-background-clip: initial !important;
 }
 
 h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 25px; }
@@ -60,39 +66,88 @@ h2 { font-size: clamp(2rem, 4vw, 2.5rem); text-align: center; margin-bottom: 60p
 /* Header */
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 20px 0;
-    background: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(0,0,0,0.05);
+    -webkit-backdrop-filter: blur(15px);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: var(--transition);
+    border-bottom: 1px solid rgba(124, 92, 191, 0.1);
 }
 
-header .container {
+.nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+    font-size: 1.8rem;
+    letter-spacing: 2.5px;
     color: var(--accent);
     text-decoration: none;
+    transition: var(--transition);
 }
 
-.desktop-nav ul { display: flex; list-style: none; gap: 30px; align-items: center; }
-.desktop-nav a { text-decoration: none; color: var(--text-secondary); font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
-.desktop-nav a:hover { color: var(--accent); }
+.nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 30px;
+    align-items: center;
+    list-style: none; /* Перестраховка на случай если в HTML вернутся li */
+}
 
-.btn-small {
-    padding: 10px 25px !important;
+.nav-links a {
+    text-decoration: none;
+    color: #4a4a4a; /* Более спокойный темный для меню */
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-gradient);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn-header {
     background: var(--accent);
     color: white !important;
+    padding: 10px 25px;
     border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
     box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn-header:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 142, 0.3);
 }
 
 /* Hamburger & Mobile Menu (Restored) */
@@ -628,32 +683,31 @@ header .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     background: white;
     border-radius: 12px;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     transition: var(--transition);
     text-decoration: none;
-    font-size: 1.5rem;
+    color: var(--text-primary);
 }
 
 .footer-social-link svg {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     transition: var(--transition);
 }
 
 .footer-social-link:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(255, 133, 162, 0.15);
 }
 
-/* Brand colors for footer icons */
-.footer-social-link[title="Instagram"] { color: #E1306C; }
-.footer-social-link[title="Telegram"] { color: #0088cc; }
-.footer-social-link[title="WhatsApp"] { color: #25D366; }
-.footer-social-link[title="Viber"] { color: #665CAC; }
+.footer-social-link[title="Instagram"]:hover { color: #E1306C; }
+.footer-social-link[title="Telegram"]:hover { color: #0088cc; }
+.footer-social-link[title="WhatsApp"]:hover { color: #25D366; }
+.footer-social-link[title="Viber"]:hover { color: #665CAC; }
 
 /* Shimmer эффект (блик) */
 .order-btns .btn::after {
@@ -722,30 +776,6 @@ footer {
     padding-left: 5px;
 }
 
-.footer-social-icons {
-    display: flex;
-    gap: 15px;
-    margin: 20px 0;
-}
-
-.footer-social-icons a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    width: 45px;
-    height: 45px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    box-shadow: var(--shadow-soft);
-    transition: var(--transition);
-}
-
-.footer-social-icons a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
 
 .delivery-info {
     font-size: 0.9rem;
@@ -770,7 +800,7 @@ footer {
     
     /* === HEADER FIX === */
     header { padding: 15px 0; }
-    .desktop-nav { display: none !important; }
+    .nav-links { display: none !important; }
     .hamburger { display: flex !important; }
     .logo { font-size: 1.3rem; }
 
@@ -876,5 +906,13 @@ footer {
     .video-marquee .video-card { flex: 0 0 200px; }
     .video-marquee .video-card img { height: 280px; }
     
-    .mobile-nav a { font-size: 1.5rem; }
+    .mobile-nav a { 
+        font-size: 1.5rem; 
+        color: white; 
+        text-decoration: none; 
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .mobile-nav li { list-style: none; margin-bottom: 25px; }
 }
