@@ -1,5 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("Naprinte Project Initialized!");
+// Проверка на двойную инициализацию (защита от багов при перезагрузках)
+if (window.naprinteInit) {
+    console.warn("Naprinte: Скрипт уже запущен.");
+} else {
+    window.naprinteInit = true;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log("Naprinte Project Initialized!");
 
     // Переключение вкладок в прайс-листе
     const tabBtns = document.querySelectorAll('.tab-btn');
@@ -57,46 +63,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Логика видео-модалки
+    // Переменные для видео-модалки
     const videoModal = document.getElementById('video-modal');
     const modalVideo = document.getElementById('modal-video');
     const videoCards = document.querySelectorAll('.video-card');
     const closeModal = document.querySelector('.close-modal');
 
-    videoCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const videoSrc = card.getAttribute('data-video');
-            
-            // Открываем модальное окно
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    // Функция открытия видео
+    const openVideo = (videoSrc) => {
+        // Сначала показываем модалку
+        videoModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
 
-            // Настройка видео
-            modalVideo.src = videoSrc;
-            modalVideo.load(); // Подгружаем файл
-            
-            // Запуск воспроизведения
+        // Полная очистка состояния плеера перед новым видео
+        modalVideo.pause();
+        modalVideo.removeAttribute('src');
+        modalVideo.innerHTML = '';
+        modalVideo.load();
+
+        // Установка нового источника
+        // Используем комбинацию src и load() - это самый стабильный вариант
+        modalVideo.src = videoSrc;
+        modalVideo.load();
+
+        // Небольшая задержка перед игрой нужна для iPhone/Safari
+        setTimeout(() => {
             const playPromise = modalVideo.play();
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    console.log("Обычный запуск не удался, пробуем без звука...");
+                    console.warn("Автовоспроизведение заблокировано. Пробуем Muted...", error);
+                    // Если заблокировано (например, режим экономии энергии), пробуем без звука
                     modalVideo.muted = true;
-                    modalVideo.play();
+                    modalVideo.play().catch(e => {
+                        console.error("Видео не может быть воспроизведено даже без звука. Проверьте формат файла.");
+                    });
                 });
             }
+        }, 100);
+    };
+
+    videoCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const videoSrc = card.getAttribute('data-video');
+            openVideo(videoSrc);
         });
     });
 
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
         modalVideo.pause();
-        // ВАЖНО: не обнуляем src сразу, чтобы не ломать поток
+        
+        // Очищаем источник через задержку, чтобы не было ошибки "Aborted"
+        setTimeout(() => {
+            if (!videoModal.classList.contains('active')) {
+                modalVideo.removeAttribute('src');
+                modalVideo.load();
+            }
+        }, 300);
+
         if (!menuOverlay.classList.contains('active')) {
             document.body.style.overflow = 'auto';
         }
     };
 
     closeModal.addEventListener('click', closeVideoModal);
+
     videoModal.addEventListener('click', (e) => {
         if (e.target === videoModal) {
             closeVideoModal();
@@ -122,4 +153,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-});
+    });
+}
