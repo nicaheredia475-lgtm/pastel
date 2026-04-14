@@ -657,8 +657,8 @@ header {
 @keyframes pulse-glow-wa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
 @keyframes pulse-glow-vb { 0% { box-shadow: 0 0 0 0 rgba(115, 96, 242, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(115, 96, 242, 0); } 100% { box-shadow: 0 0 0 0 rgba(115, 96, 242, 0); } }
 .btn-tg { animation: pulse-glow-tg 3s infinite; }
-.btn-wa { animation: pulse-glow-wa 3s infinite 1s; }
-.btn-vb { animation: pulse-glow-vb 3s infinite 2s; }
+.btn-wa { animation: pulse-glow-wa 3s infinite 1.5s; }
+.btn-vb { animation: pulse-glow-vb 3s infinite 0.75s; }
 
 .order-btns .btn:hover {
     transform: translateY(-8px) scale(1.05);
@@ -666,10 +666,11 @@ header {
 }
 
 .messenger-icon {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
     flex-shrink: 0;
-    color: white;
+    margin-right: 8px;
 }
 
 /* Footer Social Icons with Images */
@@ -693,21 +694,23 @@ header {
     color: var(--text-primary);
 }
 
-.footer-social-link svg {
-    width: 24px;
-    height: 24px;
+.footer-social-link img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
     transition: var(--transition);
 }
 
 .footer-social-link:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(255, 133, 162, 0.15);
+    box-shadow: 0 10px 30px rgba(255, 133, 162, 0.2); /* Единый брендовый розовый отблеск при наведении */
 }
 
-.footer-social-link[title="Instagram"]:hover { color: #E1306C; }
-.footer-social-link[title="Telegram"]:hover { color: #0088cc; }
-.footer-social-link[title="WhatsApp"]:hover { color: #25D366; }
-.footer-social-link[title="Viber"]:hover { color: #665CAC; }
+/* Специфические цвета свечения при наведении */
+.footer-social-link[title="Instagram"]:hover { box-shadow: 0 10px 30px rgba(225, 48, 108, 0.3); }
+.footer-social-link[title="Telegram"]:hover { box-shadow: 0 10px 30px rgba(0, 136, 204, 0.3); }
+.footer-social-link[title="WhatsApp"]:hover { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+.footer-social-link[title="Viber"]:hover { box-shadow: 0 10px 30px rgba(102, 92, 172, 0.3); }
 
 /* Shimmer эффект (блик) */
 .order-btns .btn::after {
