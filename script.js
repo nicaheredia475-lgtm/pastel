@@ -57,6 +57,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Логика видео-модалки
+    const videoModal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
+    const videoCards = document.querySelectorAll('.video-card');
+    const closeModal = document.querySelector('.close-modal');
+
+    videoCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const videoSrc = card.getAttribute('data-video');
+            modalVideo.src = videoSrc;
+            videoModal.classList.add('active');
+            modalVideo.play();
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    const closeVideoModal = () => {
+        videoModal.classList.remove('active');
+        modalVideo.pause();
+        modalVideo.src = '';
+        if (!menuOverlay.classList.contains('active')) {
+            document.body.style.overflow = 'auto';
+        }
+    };
+
+    closeModal.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            closeVideoModal();
+        }
+    });
+
     // Анимация появления при прокрутке (Scroll Reveal)
     const revealElements = document.querySelectorAll('.reveal');
     

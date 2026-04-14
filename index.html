@@ -171,61 +171,62 @@
     </section>
 
     <section id="reviews" class="reviews section">
-        <h2 class="section-title">Эмоции наших клиентов</h2>
-        <div class="marquee-wrapper video-marquee">
-            <div class="marquee-track track-left">
-                <div class="video-card marquee-item">
-                    <img src="vid/review_1.webp" alt="Распаковка заказа" loading="lazy">
-                    <div class="video-info"><span>Распаковка заказа</span></div>
+        <div class="container">
+            <h2 class="section-title">Эмоции наших клиентов</h2>
+            <div class="video-grid">
+                <!-- Видео 1 -->
+                <div class="video-card" data-video="vid/review_1.mp4">
+                    <img src="vid/thumb/review_1.jpg" alt="Отзыв клиента" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
                 </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_2.webp" alt="Процесс создания" loading="lazy">
-                    <div class="video-info"><span>Процесс создания</span></div>
+                <!-- Видео 2 -->
+                <div class="video-card" data-video="vid/review_2.mp4">
+                    <img src="vid/thumb/review_2.jpg" alt="Отзыв клиента" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
                 </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_3.webp" alt="Живой отзыв" loading="lazy">
-                    <div class="video-info"><span>Живой отзыв</span></div>
+                <!-- Видео 3 -->
+                <div class="video-card" data-video="vid/review_3.mp4">
+                    <img src="vid/thumb/review_3.jpg" alt="Отзыв клиента" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
                 </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_4.webp" alt="Качество деталей" loading="lazy">
-                    <div class="video-info"><span>Качество деталей</span></div>
+                <!-- Видео 4 -->
+                <div class="video-card" data-video="vid/review_4.mp4">
+                    <img src="vid/thumb/review_4.jpg" alt="Отзыв клиента" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
                 </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_5.webp" alt="Ваши эмоции" loading="lazy">
-                    <div class="video-info"><span>Ваши эмоции</span></div>
+                <!-- Видео 5 -->
+                <div class="video-card" data-video="vid/review_5.mp4">
+                    <img src="vid/thumb/review_5.jpg" alt="Отзыв клиента" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
                 </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_6.webp" alt="Готовая работа" loading="lazy">
-                    <div class="video-info"><span>Готовая работа</span></div>
-                </div>
-                <!-- Дубли для бесконечной прокрутки -->
-                <div class="video-card marquee-item">
-                    <img src="vid/review_1.webp" alt="Распаковка заказа" loading="lazy">
-                    <div class="video-info"><span>Распаковка заказа</span></div>
-                </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_2.webp" alt="Процесс создания" loading="lazy">
-                    <div class="video-info"><span>Процесс создания</span></div>
-                </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_3.webp" alt="Живой отзыв" loading="lazy">
-                    <div class="video-info"><span>Живой отзыв</span></div>
-                </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_4.webp" alt="Качество деталей" loading="lazy">
-                    <div class="video-info"><span>Качество деталей</span></div>
-                </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_5.webp" alt="Ваши эмоции" loading="lazy">
-                    <div class="video-info"><span>Ваши эмоции</span></div>
-                </div>
-                <div class="video-card marquee-item">
-                    <img src="vid/review_6.webp" alt="Готовая работа" loading="lazy">
-                    <div class="video-info"><span>Готовая работа</span></div>
+                <!-- Видео 6 -->
+                <div class="video-card" data-video="vid/review_6.mp4">
+                    <img src="vid/thumb/review_6.jpg" alt="Отзыв клиента" loading="lazy">
+                    <div class="play-overlay">
+                        <div class="play-icon"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Модальное окно для видео -->
+    <div id="video-modal" class="video-modal">
+        <div class="close-modal">&times;</div>
+        <div class="modal-container">
+            <video id="modal-video" controls playsinline></video>
+        </div>
+    </div>
 
     <section id="order" class="order section">
         <div class="container">
