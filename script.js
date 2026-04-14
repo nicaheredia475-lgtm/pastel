@@ -66,9 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
     videoCards.forEach(card => {
         card.addEventListener('click', () => {
             const videoSrc = card.getAttribute('data-video');
+            
+            // Сначала устанавливаем источник и сбрасываем состояние
             modalVideo.src = videoSrc;
+            modalVideo.load(); // Важно для мобильных: заставляет браузер загрузить новый файл
+            
             videoModal.classList.add('active');
-            modalVideo.play();
+            
+            // Используем промис для обработки автоплея на мобильных
+            const playPromise = modalVideo.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.warn("Автовоспроизведение было заблокировано, пользователю нужно нажать Play:", error);
+                });
+            }
+            
             document.body.style.overflow = 'hidden';
         });
     });
