@@ -67,17 +67,28 @@ document.addEventListener('DOMContentLoaded', () => {
         card.addEventListener('click', () => {
             const videoSrc = card.getAttribute('data-video');
             
-            // Сначала устанавливаем источник и сбрасываем состояние
-            modalVideo.src = videoSrc;
-            modalVideo.load(); // Важно для мобильных: заставляет браузер загрузить новый файл
+            // Очищаем предыдущий источник для стабильности
+            modalVideo.pause();
+            modalVideo.innerHTML = ''; 
+            
+            // Создаем новый элемент source - это надежнее для мобильных браузеров
+            const source = document.createElement('source');
+            source.src = videoSrc;
+            source.type = 'video/mp4';
+            modalVideo.appendChild(source);
+            
+            // Заставляем плеер 'проснуться' и загрузить новый источник
+            modalVideo.load();
             
             videoModal.classList.add('active');
             
-            // Используем промис для обработки автоплея на мобильных
+            // Пробуем запустить воспроизведение
             const playPromise = modalVideo.play();
             if (playPromise !== undefined) {
                 playPromise.catch(error => {
-                    console.warn("Автовоспроизведение было заблокировано, пользователю нужно нажать Play:", error);
+                    // Если браузер блокирует (например, на iPhone в режиме энергосбережения), 
+                    // просто выведем в консоль. Пользователь сможет нажать Play сам.
+                    console.log("Видео готово, ожидает ручного запуска, если автоплей заблокирован.");
                 });
             }
             
