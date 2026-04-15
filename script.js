@@ -65,41 +65,52 @@ if (window.naprinteInit) {
 
     // Переменные для видео-модалки
     const videoModal = document.getElementById('video-modal');
-    const modalVideo = document.getElementById('modal-video');
+    const videoPlaceholder = document.getElementById('video-placeholder');
     const videoCards = document.querySelectorAll('.video-card');
     const closeModal = document.querySelector('.close-modal');
 
     // Функция открытия видео
     const openVideo = (videoSrc) => {
-        // Сначала показываем модалку
         videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Полная очистка состояния плеера перед новым видео
-        modalVideo.pause();
-        modalVideo.removeAttribute('src');
-        modalVideo.innerHTML = '';
-        modalVideo.load();
+        // Очищаем старое содержимое
+        videoPlaceholder.innerHTML = '';
 
-        // Установка нового источника
-        // Используем комбинацию src и load() - это самый стабильный вариант
-        modalVideo.src = videoSrc;
-        modalVideo.load();
-
-        // Небольшая задержка перед игрой нужна для iPhone/Safari
-        setTimeout(() => {
-            const playPromise = modalVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.warn("Автовоспроизведение заблокировано. Пробуем Muted...", error);
-                    // Если заблокировано (например, режим экономии энергии), пробуем без звука
-                    modalVideo.muted = true;
-                    modalVideo.play().catch(e => {
-                        console.error("Видео не может быть воспроизведено даже без звука. Проверьте формат файла.");
-                    });
-                });
+        if (videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be')) {
+            // ЛОГИКА ДЛЯ YOUTUBE
+            let videoId = '';
+            if (videoSrc.includes('v=')) {
+                videoId = videoSrc.split('v=')[1].split('&')[0];
+            } else {
+                videoId = videoSrc.split('/').pop();
             }
-        }, 100);
+            
+            videoPlaceholder.innerHTML = `
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        } else {
+            // ЛОГИКА ДЛЯ ЛОКАЛЬНЫХ ФАЙЛОВ / ПРЯМЫХ ССЫЛОК
+            const videoElement = document.createElement('video');
+            videoElement.src = videoSrc;
+            videoElement.controls = true;
+            videoElement.playsInline = true;
+            videoElement.autoplay = true;
+            videoPlaceholder.appendChild(videoElement);
+
+            videoElement.play().catch(error => {
+                console.warn("Автовоспроизведение заблокировано, пробуем без звука...");
+                videoElement.muted = true;
+                videoElement.play();
+            });
+        }
     };
 
     videoCards.forEach(card => {
@@ -111,13 +122,11 @@ if (window.naprinteInit) {
 
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
-        modalVideo.pause();
         
-        // Очищаем источник через задержку, чтобы не было ошибки "Aborted"
+        // Очищаем содержимое через задержку, чтобы анимация закрытия прошла гладко
         setTimeout(() => {
             if (!videoModal.classList.contains('active')) {
-                modalVideo.removeAttribute('src');
-                modalVideo.load();
+                videoPlaceholder.innerHTML = '';
             }
         }, 300);
 
@@ -131,6 +140,16 @@ if (window.naprinteInit) {
     videoModal.addEventListener('click', (e) => {
         if (e.target === videoModal) {
             closeVideoModal();
+        }
+    });
+
+    // Эффект шапки при скролле
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
         }
     });
 
