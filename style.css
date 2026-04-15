@@ -317,28 +317,25 @@ header .container {
 .hero-single-image {
     flex: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end; /* Сдвигаем картинку вправо для баланса с текстом */
     align-items: center;
     position: relative;
     z-index: 5;
 }
 
 .hero-single-image img {
-    max-width: 100%;
+    max-width: 450px; /* Сделал значительно меньше по вашему запросу */
+    width: 100%;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 40px 100px rgba(61, 43, 63, 0.1);
-    border: 4px solid #fff;
+    border: 3px solid #fff;
     transition: var(--transition);
 }
 
 .hero-single-image img:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 60px 120px rgba(163, 95, 168, 0.15);
+    transform: translateY(-5px) scale(1.01);
 }
-
-/* Features */
-.section { padding: 100px 0; }
 .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .feature-card.btn {
     display: inline-flex;
