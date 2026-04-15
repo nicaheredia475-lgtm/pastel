@@ -74,61 +74,42 @@ if (window.naprinteInit) {
         videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Очищаем старое содержимое
+        // Очищаем старое содержимое и создаем новый контейнер
         videoPlaceholder.innerHTML = '';
+        
+        const videoElement = document.createElement('video');
+        videoElement.src = videoSrc;
+        videoElement.controls = true;
+        videoElement.playsInline = true;
+        videoElement.autoplay = true;
+        videoElement.style.width = '100%';
+        videoElement.style.display = 'block';
+        videoElement.style.borderRadius = '20px';
+        
+        videoPlaceholder.appendChild(videoElement);
 
-        if (videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be')) {
-            // ЛОГИКА ДЛЯ YOUTUBE
-            let videoId = '';
-            if (videoSrc.includes('v=')) {
-                videoId = videoSrc.split('v=')[1].split('&')[0];
-            } else {
-                videoId = videoSrc.split('/').pop();
-            }
-            
-            videoPlaceholder.innerHTML = `
-                <iframe 
-                    width="100%" 
-                    height="100%" 
-                    src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            `;
-        } else {
-            // ЛОГИКА ДЛЯ ЛОКАЛЬНЫХ ФАЙЛОВ / ПРЯМЫХ ССЫЛОК
-            const videoElement = document.createElement('video');
-            videoElement.src = videoSrc;
-            videoElement.controls = true;
-            videoElement.playsInline = true;
-            videoElement.autoplay = true;
-            videoPlaceholder.appendChild(videoElement);
-
-            videoElement.play().catch(error => {
-                console.warn("Автовоспроизведение заблокировано, пробуем без звука...");
-                videoElement.muted = true;
-                videoElement.play();
-            });
-        }
-    };
-
-    videoCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const videoSrc = card.getAttribute('data-video');
-            openVideo(videoSrc);
+        videoElement.play().catch(error => {
+            console.warn("Autoplay blocked, attempting muted...");
+            videoElement.muted = true;
+            videoElement.play();
         });
-    });
+    };
 
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
         
-        // Очищаем содержимое через задержку, чтобы анимация закрытия прошла гладко
+        // Удаляем видео после завершения анимации закрытия
         setTimeout(() => {
             if (!videoModal.classList.contains('active')) {
+                const video = videoPlaceholder.querySelector('video');
+                if (video) {
+                    video.pause();
+                    video.src = "";
+                    video.load();
+                }
                 videoPlaceholder.innerHTML = '';
             }
-        }, 300);
+        }, 400);
 
         if (!menuOverlay.classList.contains('active')) {
             document.body.style.overflow = 'auto';
