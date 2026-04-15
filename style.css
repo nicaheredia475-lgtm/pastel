@@ -1038,48 +1038,49 @@ footer {
     .order-btns { 
         display: flex !important;
         flex-direction: column !important; 
-        gap: 20px; 
+        gap: 18px; 
         width: 100%; 
         align-items: center; 
+        padding: 0 10px;
     }
 
-    /* Ultra-Luxury Кнопки (Максимальный объем и размер) */
+    /* Pixel-Perfect Ultra-Luxury (The '12:41' Look) */
     .order-btns .btn { 
         width: 100% !important; 
-        height: 85px !important; /* Массивные премиальные кнопки */
+        height: 85px !important; 
         border-radius: 50px !important; 
-        color: white !important;
+        color: #ffffff !important;
         font-weight: 800 !important;
-        font-size: 1.15rem !important; /* Крупный жирный шрифт */
+        font-size: 1.2rem !important;
         justify-content: center !important;
         border: none !important;
         flex-direction: row !important;
-        padding: 0 30px !important;
+        padding: 0 35px !important;
         transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         animation: pulse-soft 3s infinite !important;
     }
 
-    /* Насыщенные градиенты и глубокие тени */
     .btn-tg { 
-        background: linear-gradient(135deg, #24A1DE 0%, #0088cc 100%) !important;
-        box-shadow: 0 15px 35px rgba(36, 161, 222, 0.35) !important;
+        background: linear-gradient(to right, #24A1DE, #1e87bb) !important;
+        box-shadow: 0 15px 35px rgba(36, 161, 222, 0.4) !important;
     }
     
     .btn-wa { 
-        background: linear-gradient(135deg, #25D366 0%, #128C7E 100%) !important;
-        box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35) !important;
+        background: linear-gradient(to right, #25D366, #1ea14e) !important;
+        box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4) !important;
     }
 
     .btn-vb { 
-        background: linear-gradient(135deg, #7360f2 0%, #4b3da5 100%) !important;
-        box-shadow: 0 15px 35px rgba(115, 96, 242, 0.35) !important;
+        background: linear-gradient(to right, #7360f2, #5a49c4) !important;
+        box-shadow: 0 15px 35px rgba(115, 96, 242, 0.4) !important;
     }
 
     .order-btns .btn img { 
-        width: 42px !important; /* Очень крупные иконки */
-        height: 42px !important; 
+        width: 44px !important; 
+        height: 44px !important; 
         margin-right: 18px !important; 
-        filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); /* Сильный объем */
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1.1);
     }
 
     /* Мягкая анимация основной кнопки */
