@@ -1016,64 +1016,72 @@ footer {
     .price-item span { font-size: 0.65rem; }
     .price-item strong { font-size: 0.9rem; }
     
-    /* === ORDER SECTION (PREMIUM RE-FRESH) === */
+    /* === ORDER SECTION (BOUTIQUE CARDS REDESIGN) === */
     .order-card { 
-        padding: 60px 25px; 
+        padding: 60px 20px; 
         border-radius: 40px; 
-        width: 100%; 
-        box-sizing: border-box; 
         background: linear-gradient(135deg, #ffffff 0%, #fefaff 100%);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
         border: 1px solid rgba(255, 133, 162, 0.08);
-    }
-    .order-content h2 {
-        font-size: 1.6rem !important; /* Более изящный заголовок */
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
-    .order-content p {
-        font-size: 0.95rem;
-        margin-bottom: 40px;
-        color: var(--text-secondary);
-    }
-    .order-btns { 
-        flex-direction: column !important; 
-        gap: 15px; 
-        width: 100%; 
-        align-items: stretch; 
-    }
-    .order-btns .btn { 
-        width: 100% !important; 
-        min-width: auto; 
-        height: 65px; 
-        font-size: 1.05rem; 
-        border-radius: 20px; 
-        justify-content: flex-start; /* Иконка слева, текст по центру */
-        padding: 0 25px; 
-        background-color: transparent;
-        animation: none; /* Убираем старую пульсацию для солидности */
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        border: 1px solid rgba(255,255,255,0.2);
+        position: relative;
     }
 
-    /* Утонченные градиенты для мессенджеров */
-    .btn-tg { 
-        background: linear-gradient(135deg, #24A1DE 0%, #1e87bb 100%) !important; 
-        box-shadow: 0 10px 30px rgba(36, 161, 222, 0.15) !important; 
+    .order-btns { 
+        display: grid !important; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+        width: 100%; 
+        align-items: stretch;
     }
-    .btn-wa { 
-        background: linear-gradient(135deg, #25D366 0%, #1eb155 100%) !important; 
-        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.15) !important; 
+
+    .order-btns .btn { 
+        flex-direction: column !important;
+        height: auto !important;
+        padding: 30px 10px !important;
+        border-radius: 25px !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.6) !important;
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 1) !important;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.03) !important;
+        color: var(--text-primary) !important;
+        font-weight: 700 !important;
+        font-size: 0.85rem !important;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        animation: none !important;
     }
+
+    /* Viber занимает всю ширину под ними */
     .btn-vb { 
-        background: linear-gradient(135deg, #7360f2 0%, #5d4bc6 100%) !important; 
-        box-shadow: 0 10px 30px rgba(115, 96, 242, 0.15) !important; 
+        grid-column: span 2;
+        padding: 20px !important;
+        flex-direction: row !important; /* Горизонтально для широкой плашки */
     }
 
     .order-btns .btn img { 
-        width: 28px !important; 
-        height: 28px !important; 
-        margin-right: 15px; 
-        filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+        margin: 0 0 15px 0 !important;
+        width: 35px !important;
+        height: 35px !important;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+
+    .btn-vb img { 
+        margin: 0 15px 0 0 !important; 
+    }
+
+    /* Мягкие брендовые акценты (подчеркивание или тень) */
+    .btn-tg { border-bottom: 4px solid #24A1DE !important; }
+    .btn-wa { border-bottom: 4px solid #25D366 !important; }
+    .btn-vb { border-bottom: 4px solid #7360f2 !important; }
+
+    .order-btns .btn:active {
+        transform: scale(0.96);
+        background: rgba(255, 255, 255, 0.9) !important;
     }
 
     /* === FOOTER === */
