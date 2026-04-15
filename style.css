@@ -583,7 +583,7 @@ header .container {
 /* Reviews (Optimized Video Grid) */
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     margin-top: 30px;
 }
@@ -1231,8 +1231,8 @@ footer {
 
     /* === VIDEO GRID FIX === */
     .video-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
     }
     
     .play-icon {
