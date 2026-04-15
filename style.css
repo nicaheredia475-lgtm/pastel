@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Manrope:wght@300;500;800&family=Outfit:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Manrope:wght@300;500;800&display=swap');
 
 :root {
     --bg-dark: #ffffff;
@@ -684,8 +684,9 @@ header .container {
     height: 70px;
     flex: 1; 
     min-width: 200px; 
-    font-size: 1.1rem; 
-    font-weight: 800;
+    font-size: 1.15rem; 
+    font-weight: 500;
+    font-family: 'Outfit', sans-serif !important;
     border-radius: 20px; 
     display: flex; 
     align-items: center; 
@@ -694,6 +695,7 @@ header .container {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    text-transform: none;
     border: none;
 }
 
