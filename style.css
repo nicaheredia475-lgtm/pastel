@@ -3,10 +3,10 @@
 :root {
     --bg-dark: #ffffff;
     --bg-card: #ffffff;
-    --accent: #ff85a2; /* Розовый основной */
-    --accent-secondary: #ff6b8e; /* Более темный розовый для контраста */
+    --accent: #a35fa8; /* Тот самый черничный/пурпурный со скриншота */
+    --accent-secondary: #8e4a93; /* Более глубокий оттенок для теней */
     --accent-gradient: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-    --accent-glow: rgba(255, 133, 162, 0.15);
+    --accent-glow: rgba(163, 95, 168, 0.15);
     --text-primary: #2d3436;
     --text-secondary: #636e72;
     --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
