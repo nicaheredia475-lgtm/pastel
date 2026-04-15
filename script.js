@@ -65,34 +65,29 @@ if (window.naprinteInit) {
 
     // Переменные для видео-модалки
     const videoModal = document.getElementById('video-modal');
-    const videoPlaceholder = document.getElementById('video-placeholder');
     const videoCards = document.querySelectorAll('.video-card');
     const closeModal = document.querySelector('.close-modal');
 
     // Функция открытия видео
     const openVideo = (videoSrc) => {
+        const videoElement = document.getElementById('modal-video');
+        if (!videoElement) return;
+
         videoModal.classList.add('active');
         document.body.style.overflow = 'hidden';
 
-        // Очищаем старое содержимое и создаем новый контейнер
-        videoPlaceholder.innerHTML = '';
-        
-        const videoElement = document.createElement('video');
+        // Устанавливаем источник и сбрасываем состояние
         videoElement.src = videoSrc;
-        videoElement.controls = true;
-        videoElement.playsInline = true;
-        videoElement.autoplay = true;
-        videoElement.style.width = '100%';
-        videoElement.style.display = 'block';
-        videoElement.style.borderRadius = '20px';
+        videoElement.load();
         
-        videoPlaceholder.appendChild(videoElement);
-
-        videoElement.play().catch(error => {
-            console.warn("Autoplay blocked, attempting muted...");
-            videoElement.muted = true;
-            videoElement.play();
-        });
+        // Маленькая задержка для корректного срабатывания на телефонах
+        setTimeout(() => {
+            videoElement.play().catch(error => {
+                console.warn("Autoplay blocked, attempting muted...");
+                videoElement.muted = true;
+                videoElement.play();
+            });
+        }, 100);
     };
 
     videoCards.forEach(card => {
@@ -105,18 +100,17 @@ if (window.naprinteInit) {
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
         
-        // Удаляем видео после завершения анимации закрытия
-        setTimeout(() => {
-            if (!videoModal.classList.contains('active')) {
-                const video = videoPlaceholder.querySelector('video');
-                if (video) {
-                    video.pause();
-                    video.src = "";
-                    video.load();
+        const videoElement = document.getElementById('modal-video');
+        if (videoElement) {
+            videoElement.pause();
+            // Сбрасываем src через небольшую задержку, чтобы не было "дергания" при анимации
+            setTimeout(() => {
+                if (!videoModal.classList.contains('active')) {
+                    videoElement.src = "";
+                    videoElement.load();
                 }
-                videoPlaceholder.innerHTML = '';
-            }
-        }, 400);
+            }, 400);
+        }
 
         if (!menuOverlay.classList.contains('active')) {
             document.body.style.overflow = 'auto';

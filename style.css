@@ -621,6 +621,7 @@ header .container {
     justify-content: center;
     align-items: center;
     transition: var(--transition);
+    pointer-events: none;
 }
 
 .play-icon {
