@@ -1047,6 +1047,27 @@ footer {
     .hero-btns { width: 100%; }
     .hero-btns .btn { width: 100%; display: block; padding: 18px 20px; }
     
+    /* Социальный бейдж на мобильных */
+    .hero-content .badge, .social-badge {
+        display: flex !important;
+        margin: 0 auto 15px !important;
+        width: fit-content;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .social-badge {
+        font-size: 0.85rem !important;
+        padding: 6px 14px !important;
+    }
+    
+    .social-badge span {
+        font-family: 'Montserrat', sans-serif !important; /* Более акцентный шрифт */
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.75rem;
+    }
+    
     /* === PRICE GRID === */
     .price-grid { 
         grid-template-columns: repeat(3, 1fr); 
