@@ -1016,11 +1016,65 @@ footer {
     .price-item span { font-size: 0.65rem; }
     .price-item strong { font-size: 0.9rem; }
     
-    /* === ORDER SECTION === */
-    .order-card { padding: 40px 20px; border-radius: 30px; width: 100%; box-sizing: border-box; }
-    .order-btns { flex-direction: column !important; gap: 12px; width: 100%; align-items: stretch; }
-    .order-btns .btn { width: 100% !important; min-width: auto; height: 60px; font-size: 1rem; border-radius: 15px; justify-content: center; padding: 0 15px; }
-    .order-btns .btn img { width: 24px !important; height: 24px !important; margin-right: 12px; }
+    /* === ORDER SECTION (PREMIUM RE-FRESH) === */
+    .order-card { 
+        padding: 60px 25px; 
+        border-radius: 40px; 
+        width: 100%; 
+        box-sizing: border-box; 
+        background: linear-gradient(135deg, #ffffff 0%, #fefaff 100%);
+        border: 1px solid rgba(255, 133, 162, 0.08);
+    }
+    .order-content h2 {
+        font-size: 1.6rem !important; /* Более изящный заголовок */
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+    .order-content p {
+        font-size: 0.95rem;
+        margin-bottom: 40px;
+        color: var(--text-secondary);
+    }
+    .order-btns { 
+        flex-direction: column !important; 
+        gap: 15px; 
+        width: 100%; 
+        align-items: stretch; 
+    }
+    .order-btns .btn { 
+        width: 100% !important; 
+        min-width: auto; 
+        height: 65px; 
+        font-size: 1.05rem; 
+        border-radius: 20px; 
+        justify-content: flex-start; /* Иконка слева, текст по центру */
+        padding: 0 25px; 
+        background-color: transparent;
+        animation: none; /* Убираем старую пульсацию для солидности */
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Утонченные градиенты для мессенджеров */
+    .btn-tg { 
+        background: linear-gradient(135deg, #24A1DE 0%, #1e87bb 100%) !important; 
+        box-shadow: 0 10px 30px rgba(36, 161, 222, 0.15) !important; 
+    }
+    .btn-wa { 
+        background: linear-gradient(135deg, #25D366 0%, #1eb155 100%) !important; 
+        box-shadow: 0 10px 30px rgba(37, 211, 102, 0.15) !important; 
+    }
+    .btn-vb { 
+        background: linear-gradient(135deg, #7360f2 0%, #5d4bc6 100%) !important; 
+        box-shadow: 0 10px 30px rgba(115, 96, 242, 0.15) !important; 
+    }
+
+    .order-btns .btn img { 
+        width: 28px !important; 
+        height: 28px !important; 
+        margin-right: 15px; 
+        filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+    }
 
     /* === FOOTER === */
     .footer-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
