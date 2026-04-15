@@ -253,9 +253,10 @@ header .container {
     background: #fff;
     color: var(--accent);
     border: 1px solid var(--accent);
-    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
     border-radius: 50px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 25px;
     display: inline-block;
 }
@@ -273,10 +274,10 @@ header .container {
     padding: 8px 18px;
     border-radius: 50px;
     text-decoration: none;
-    color: var(--accent) !important; /* Единый цвет по просьбе пользователя */
-    font-family: 'Outfit', sans-serif !important;
-    font-size: 0.9rem;
-    font-weight: 500;
+    color: var(--accent) !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.85rem;
+    font-weight: 800;
     margin-bottom: 30px;
     margin-left: 8px;
     transition: var(--transition);
@@ -1064,10 +1065,11 @@ footer {
     }
     
     .social-badge span {
-        font-family: 'Montserrat', sans-serif !important; /* Более акцентный шрифт */
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.75rem;
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 800 !important;
+        text-transform: none !important;
+        letter-spacing: 0;
+        font-size: 0.8rem !important;
     }
     
     /* === PRICE GRID === */
