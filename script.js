@@ -95,6 +95,13 @@ if (window.naprinteInit) {
         });
     };
 
+    videoCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const videoSrc = card.getAttribute('data-video');
+            openVideo(videoSrc);
+        });
+    });
+
     const closeVideoModal = () => {
         videoModal.classList.remove('active');
         
