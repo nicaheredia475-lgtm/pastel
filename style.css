@@ -42,6 +42,7 @@ h1, h2, h3 {
     background: none !important;
     -webkit-text-fill-color: initial !important;
     -webkit-background-clip: initial !important;
+    background-clip: initial !important;
 }
 
 h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 25px; }
