@@ -1038,49 +1038,66 @@ footer {
     .order-btns { 
         display: flex !important;
         flex-direction: column !important; 
-        gap: 18px; 
+        gap: 20px; 
         width: 100%; 
         align-items: center; 
-        padding: 0 10px;
+        padding: 0 5px;
     }
 
-    /* Pixel-Perfect Ultra-Luxury (The '12:41' Look) */
+    /* Идеальная симметрия (Сетка 90px для иконки + остальное под текст) */
     .order-btns .btn { 
+        display: grid !important;
+        grid-template-columns: 85px 1fr !important; /* Фиксированная ось для иконок */
         width: 100% !important; 
         height: 85px !important; 
         border-radius: 50px !important; 
         color: #ffffff !important;
-        font-weight: 800 !important;
-        font-size: 1.2rem !important;
-        justify-content: center !important;
+        
+        /* Typography Upgrade */
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 1.15rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
+        
+        text-align: left !important;
+        justify-content: stretch !important;
+        align-items: center !important;
         border: none !important;
-        flex-direction: row !important;
-        padding: 0 35px !important;
+        padding: 0 !important;
         transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
         text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        animation: pulse-soft 3s infinite !important;
+        overflow: hidden;
+        animation: pulse-soft 3.5s infinite !important;
     }
 
     .btn-tg { 
-        background: linear-gradient(to right, #24A1DE, #1e87bb) !important;
-        box-shadow: 0 15px 35px rgba(36, 161, 222, 0.4) !important;
+        background: linear-gradient(to right, #24A1DE, #2299d2) !important;
+        box-shadow: 0 15px 35px rgba(36, 161, 222, 0.35) !important;
     }
     
     .btn-wa { 
-        background: linear-gradient(to right, #25D366, #1ea14e) !important;
-        box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4) !important;
+        background: linear-gradient(to right, #25D366, #22c05d) !important;
+        box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35) !important;
     }
 
     .btn-vb { 
-        background: linear-gradient(to right, #7360f2, #5a49c4) !important;
-        box-shadow: 0 15px 35px rgba(115, 96, 242, 0.4) !important;
+        background: linear-gradient(to right, #7360f2, #6b59e3) !important;
+        box-shadow: 0 15px 35px rgba(115, 96, 242, 0.35) !important;
     }
 
     .order-btns .btn img { 
+        grid-column: 1;
+        justify-self: center; /* Иконка всегда в центре своего 85px участка */
         width: 44px !important; 
         height: 44px !important; 
-        margin-right: 18px !important; 
-        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)) brightness(1.1);
+        margin: 0 !important;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+    }
+
+    /* Текст начинается всегда в одной точке */
+    .order-btns .btn::after {
+        content: none;
     }
 
     /* Мягкая анимация основной кнопки */
