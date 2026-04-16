@@ -100,13 +100,14 @@ header .container {
 }
 
 .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
+    font-family: 'Lora', serif;
+    font-weight: 700;
     font-size: 1.8rem;
-    letter-spacing: 2.5px;
+    letter-spacing: 1px;
     color: var(--accent);
     text-decoration: none;
     transition: var(--transition);
+    text-transform: uppercase;
 }
 
 .nav-links {
@@ -957,16 +958,28 @@ footer {
 }
 
 .footer-col h4 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.1rem;
+    font-family: 'Lora', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
     margin-bottom: 25px;
     color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-logo {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .footer-tagline {
     color: var(--text-secondary);
+    font-family: 'Lora', serif;
     font-size: 0.95rem;
     line-height: 1.8;
     max-width: 300px;
@@ -983,6 +996,7 @@ footer {
 .footer-col.links a {
     text-decoration: none;
     color: var(--text-secondary);
+    font-family: 'Lora', serif;
     font-size: 0.95rem;
     transition: var(--transition);
 }
@@ -1255,7 +1269,14 @@ footer {
     .footer-social-icons { justify-content: center; flex-wrap: wrap; gap: 12px; width: 100%; }
     .footer-social-link { width: 40px !important; height: 40px !important; }
     .footer-social-link img { width: 30px !important; height: 30px !important; }
-    .footer-phone { display: block; text-align: center; margin-bottom: 20px; font-size: 1.2rem; }
+    .footer-phone { 
+        display: block; 
+        text-align: center; 
+        margin-bottom: 20px; 
+        font-size: 1.2rem; 
+        font-family: 'Lora', serif;
+        font-weight: 600;
+    }
     .delivery-info { text-align: center; margin-top: 15px; }
     .footer-col.contacts { display: flex; flex-direction: column; align-items: center; width: 100%; }
 
