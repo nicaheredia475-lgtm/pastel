@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Manrope:wght@300;500;800&display=swap');
+/* Premium Typography System: Montserrat (Headings) & Lora (Descriptions) */
 
 :root {
     --bg-dark: #ffffff;
@@ -23,7 +23,8 @@
 body {
     background-color: var(--bg-dark);
     color: var(--text-primary);
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Lora', serif;
+    font-weight: 400;
     line-height: 1.6;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -262,7 +263,13 @@ header .container {
     display: inline-block;
 }
 
-.hero p { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 40px; }
+.hero p { 
+    font-size: 1.15rem; 
+    color: var(--text-secondary); 
+    margin-bottom: 40px; 
+    line-height: 1.7;
+    letter-spacing: 0.2px;
+}
 
 /* Instagram Social Badge */
 .social-badge {
@@ -411,7 +418,14 @@ header .container {
     font-size: 1.25rem; 
     margin-bottom: 15px; 
     color: var(--accent);
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
 }
 
 /* Prices (Fixing Grid) */
@@ -725,9 +739,11 @@ header .container {
 .order-content { position: relative; z-index: 5; }
 
 .order-content h2 {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 2.2rem;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     background: linear-gradient(135deg, var(--accent), #7c5cbf);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -737,11 +753,12 @@ header .container {
 }
 
 .order-content p {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.05rem;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
     font-weight: 400;
     color: var(--text-secondary);
     letter-spacing: 0.3px;
+    line-height: 1.6;
 }
 
 /* Декоративные круги */
@@ -772,7 +789,9 @@ header .container {
     min-width: 200px; 
     font-size: 1.15rem; 
     font-weight: 500;
-    font-family: 'Outfit', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
     border-radius: 20px; 
     display: flex; 
     align-items: center; 
@@ -1150,6 +1169,7 @@ footer {
         letter-spacing: -0.5px;
     }
     .order-content p {
+        font-family: 'Lora', serif;
         font-size: 0.95rem;
         margin-bottom: 45px;
         color: var(--text-secondary);
@@ -1173,12 +1193,12 @@ footer {
         border-radius: 50px !important; 
         color: #ffffff !important;
         
-        /* Typography Upgrade (Idea 1: Modern App Style - OUTFIT) */
-        font-family: 'Outfit', sans-serif !important;
-        font-weight: 500 !important;
-        font-size: 1.15rem !important;
-        text-transform: none !important; /* Без капса! */
-        letter-spacing: 0.5px !important;
+        /* Typography Upgrade (Montserrat for buttons) */
+        font-family: 'Montserrat', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 1.1rem !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
         
         text-align: left !important;
         justify-content: stretch !important;
@@ -1283,6 +1303,7 @@ footer {
     .video-marquee .video-card img { height: 280px; }
     
     .mobile-nav a { 
+        font-family: 'Montserrat', sans-serif;
         font-size: 1.8rem; 
         color: var(--text-primary); 
         text-decoration: none; 
