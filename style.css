@@ -325,7 +325,7 @@ header .container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 22px 65px;
+    padding: 20px 60px;
     background: var(--accent);
     color: white;
     text-decoration: none;
@@ -334,13 +334,10 @@ header .container {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-size: 1.1rem;
-    border-radius: 100px 100px 0 0;
-    border-bottom: 6px solid var(--accent-secondary);
+    border-radius: 50px;
     box-shadow: 0 15px 45px var(--accent-glow);
-    transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.3s ease;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    transition: var(--transition);
+    border: none;
     cursor: pointer;
 }
 
@@ -836,24 +833,21 @@ header .container {
     font-family: 'Montserrat', sans-serif !important;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    border-radius: 100px 100px 0 0;
-    border-bottom: 6px solid rgba(0,0,0,0.2); /* Default bottom border */
+    border-radius: 50px;
     display: flex; 
     align-items: center; 
     justify-content: center; 
     gap: 15px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: var(--transition);
     position: relative;
     overflow: hidden;
     text-transform: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
+    border: none;
 }
 
-.btn-tg { border-bottom-color: rgba(0,0,0,0.2) !important; }
-.btn-wa { border-bottom-color: rgba(0,0,0,0.2) !important; }
-.btn-vb { border-bottom-color: rgba(0,0,0,0.2) !important; }
+.btn-tg { border: none !important; }
+.btn-wa { border: none !important; }
+.btn-vb { border: none !important; }
 
 .btn-tg { background: #24A1DE; color: white !important; box-shadow: 0 10px 25px rgba(36, 161, 222, 0.3); }
 .btn-wa { background: #25D366; color: white !important; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
@@ -1295,15 +1289,12 @@ footer {
     /* Идеальная симметрия (Сетка 85px для иконки + остальное под текст) */
     .order-btns .btn { 
         display: grid !important;
-        grid-template-columns: 85px 1fr !important; /* Фиксированная ось для иконок */
+        grid-template-columns: 85px 1fr !important;
         width: 100% !important; 
-        height: 75px !important; /* Более компактная и современная высота */
-        border-radius: 100px 100px 0 0 !important; 
-        border-bottom: 6px solid rgba(0,0,0,0.2) !important;
-        border-top: none !important;
-        border-left: none !important;
-        border-right: none !important;
-        transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        height: 75px !important;
+        border-radius: 50px !important; 
+        border: none !important;
+        transition: all 0.3s ease;
         text-shadow: none !important;
         overflow: hidden;
         animation: none !important;
