@@ -849,9 +849,9 @@ header .container {
 .btn-wa { border: none !important; }
 .btn-vb { border: none !important; }
 
-.btn-tg { background: #24A1DE; color: white !important; box-shadow: 0 10px 25px rgba(36, 161, 222, 0.3); }
-.btn-wa { background: #25D366; color: white !important; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3); }
-.btn-vb { background: #7360f2; color: white !important; box-shadow: 0 10px 25px rgba(115, 96, 242, 0.3); }
+.btn-tg { background: #24A1DE; color: white !important; }
+.btn-wa { background: #25D366; color: white !important; }
+.btn-vb { background: #7360f2; color: white !important; }
 
 .btn-tg { background: #0088cc; }
 .btn-wa { background: #25D366; }
@@ -1302,27 +1302,23 @@ footer {
     }
 
     .btn-tg { 
-        background: linear-gradient(to right, #24A1DE, #2299d2) !important;
-        box-shadow: 0 15px 35px rgba(36, 161, 222, 0.35) !important;
+        background: #24A1DE !important;
     }
     
     .btn-wa { 
-        background: linear-gradient(to right, #25D366, #22c05d) !important;
-        box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35) !important;
+        background: #25D366 !important;
     }
 
     .btn-vb { 
-        background: linear-gradient(to right, #7360f2, #6b59e3) !important;
-        box-shadow: 0 15px 35px rgba(115, 96, 242, 0.35) !important;
+        background: #7360f2 !important;
     }
 
     .order-btns .btn img { 
         grid-column: 1;
-        justify-self: center; /* Иконка всегда в центре своего 85px участка */
+        justify-self: center;
         width: 44px !important; 
         height: 44px !important; 
         margin: 0 !important;
-        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
     }
 
     /* Текст начинается всегда в одной точке */
